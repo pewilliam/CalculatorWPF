@@ -11,6 +11,10 @@
         Title="Calculator" Height="450" Width="300"
         ResizeMode="NoResize">
 
+    <Window.Resources>
+        <ResourceDictionary Source="ResourceDictionary.xaml"></ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" MouseDown="RowDefinition_MouseDown"/>
@@ -39,18 +43,14 @@
             <Button x:Name="Close"
                     Grid.Column="2"
                     Content="X"
-                    Background="Transparent"
-                    Foreground="Pink"
-                    Cursor="Hand"
-                    BorderThickness="0" Click="CloseButton"/>
+                    Click="CloseButton"
+                    Style="{StaticResource ResourceKey=ButtonsTools}"/>
 
             <Button x:Name="Minimize"
                     Grid.Column="1"
                     Content="-"
-                    Background="Transparent"
-                    Foreground="Pink"
-                    Cursor="Hand"
-                    BorderThickness="0" Click="MinimizeButton"/>
+                    Click="MinimizeButton"
+                    Style="{StaticResource ResourceKey=ButtonsTools}"/>
         </Grid>
 
         <TextBox x:Name="Result"
@@ -78,174 +78,155 @@
 
         <Button x:Name="ClearEntry"
                 Content="CE"
-                BorderBrush="Aqua"
                 FontSize="25"
                 Grid.Column="4"
                 Grid.Row="4"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="ClearEntryButton"/>
+                Click="ClearEntryButton"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Delete"
                 Content="DEL"
-                BorderBrush="Aqua"
                 FontSize="15"
                 Grid.Column="4"
                 Grid.Row="2"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="DeleteText"/>
+                Click="DeleteText"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Clear"
                 Content="C"
-                BorderBrush="Aqua"
                 FontSize="25"
                 Grid.Column="4"
                 Grid.Row="3"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="ClearAllButton"/>
+                Click="ClearAllButton"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Multiplier"
                 Content="x"
-                BorderBrush="Aqua"
                 FontSize="35"
                 Grid.Column="3"
                 Grid.Row="2"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="OperatorButton"/>
+                Click="OperatorButton"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Divisor"
                 Content="/"
-                BorderBrush="Aqua"
                 FontSize="25"
                 Grid.Column="3"
                 Grid.Row="3"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="OperatorButton"/>
+                Click="OperatorButton"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Seven"
                 Content="7"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="0"
                 Grid.Row="2"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Eight"
                 Content="8"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="1"
                 Grid.Row="2"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Nine"
                 Content="9"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="2"
                 Grid.Row="2"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Plus"
                 Content="+"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="3"
                 Grid.Row="4"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="OperatorButton"/>
+                Click="OperatorButton"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Four"
                 Content="4"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="0"
                 Grid.Row="3"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Five"
                 Content="5"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="1"
                 Grid.Row="3"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Six"
                 Content="6"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="2"
                 Grid.Row="3"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Minus"
                 Content="-"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="3"
                 Grid.Row="5"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="OperatorButton"/>
+                Click="OperatorButton"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="One"
                 Content="1"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="0"
                 Grid.Row="4"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Two"
                 Content="2"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="1"
                 Grid.Row="4"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Three"
                 Content="3"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="2"
                 Grid.Row="4"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Equals"
                 Content="="
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="4"
                 Grid.Row="5"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="ResultButton"/>
+                Click="ResultButton"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Zero"
                 Content="0"
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.Row="5"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Dot"
                 Content="."
-                BorderBrush="Aqua"
                 FontSize="40"
                 Grid.Column="2"
                 Grid.Row="5"
-                Background="Transparent"
-                Foreground="White" Cursor="Hand" Click="NumericButtonClick"/>
+                Click="NumericButtonClick"
+                Style="{StaticResource ResourceKey=Buttons}"/>
     </Grid>
 </Window>
