@@ -74,6 +74,7 @@
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
                Grid.Row="1"
+               Grid.ColumnSpan="5"
                Foreground="White"/>
 
         <Button x:Name="ClearEntry"

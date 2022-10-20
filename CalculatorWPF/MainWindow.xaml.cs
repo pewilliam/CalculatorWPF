@@ -22,10 +22,7 @@ namespace CalculatorWPF
 
             if (Result.Text == "0" && button.Content.ToString() == ".")
             {
-                if(Result.Text.Length < 12)
-                {
-                    Result.AppendText(button.Content.ToString());
-                }
+                Result.AppendText(button.Content.ToString());
             }
 
             if (Result.Text.ToString() == "0" || isOperationPerformed)
@@ -70,12 +67,20 @@ namespace CalculatorWPF
 
             switch (operationPerformed)
             {
-                case "+":
+                case "+": // soma
                     resultado = resultValue + double.Parse(Result.Text, CultureInfo.InvariantCulture);
 
-                    if (GetDoubleLength(resultado) > 7)
+                    if (GetDoubleLength(resultado) > 7) // verifica se a quantidade de números após casa decimal é maior que 7
                     {
-                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        Result.FontSize = 30;
+                        Result.Text = resultado.ToString("F10", CultureInfo.InvariantCulture);
+                        break;
+                    }
+
+                    if (resultado.ToString().Length > 10) // verifica se a quantidade de números totais é maior que 10
+                    {
+                        Result.FontSize = 28; // caso seja, diminui tamanho da fonte para 28 para caber todos
+                        Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
                         break;
                     }
 
@@ -88,7 +93,7 @@ namespace CalculatorWPF
 
                     if (GetDoubleLength(resultado) > 7)
                     {
-                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        Result.Text = resultado.ToString("F10", CultureInfo.InvariantCulture);
                         break;
                     }
 
@@ -96,12 +101,19 @@ namespace CalculatorWPF
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
-                case "x":
+                case "x": // multiplicação
                     resultado = resultValue * double.Parse(Result.Text, CultureInfo.InvariantCulture);
 
-                    if (GetDoubleLength(resultado) > 7)
+                    if (GetDoubleLength(resultado) > 7) // verifica se a quantidade de números após casa decimal é maior que 7
                     {
-                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        if (resultado.ToString().Length > 12) // verifica se a quantidade de números totais é maior que 12
+                        {
+                            Result.FontSize = 30; // caso seja, diminui a fonte para 30 para caber todos
+                            Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
+                            break;
+                        }
+                        Result.FontSize = 40;
+                        Result.Text = resultado.ToString("F10", CultureInfo.InvariantCulture);
                         break;
                     }
 
@@ -109,12 +121,12 @@ namespace CalculatorWPF
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
-                case "/":
+                case "/": // divisão
                     resultado = resultValue / double.Parse(Result.Text, CultureInfo.InvariantCulture);
 
-                    if(GetDoubleLength(resultado) > 7)
+                    if(GetDoubleLength(resultado) > 7) // verifica se a quantidade de números após casa decimal é maior que 7
                     {
-                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        Result.Text = resultado.ToString("F10", CultureInfo.InvariantCulture);
                         break;
                     }
 
@@ -131,23 +143,25 @@ namespace CalculatorWPF
             isOperationPerformed = true;
         }
 
-        private void ClearEntryButton(object sender, RoutedEventArgs e)
+        private void ClearEntryButton(object sender, RoutedEventArgs e) // limpa entrada
         {
             Result.Text = "0";
         }
 
-        private void ClearAllButton(object sender, RoutedEventArgs e)
+        private void ClearAllButton(object sender, RoutedEventArgs e) // limpa entrada e memória
         {
             Result.Text = "0";
             CurrentEntry.Content = 0;
+            resultValue = 0;
+            operationPerformed = "";
         }
 
-        private void CloseButton(object sender, RoutedEventArgs e)
+        private void CloseButton(object sender, RoutedEventArgs e) // fecha programa
         {
             Close();
         }
 
-        private void MinimizeButton(object sender, RoutedEventArgs e)
+        private void MinimizeButton(object sender, RoutedEventArgs e) // minimiza
         {
             this.WindowState = WindowState.Minimized;
         }
@@ -160,7 +174,7 @@ namespace CalculatorWPF
             }
         }
 
-        private void DeleteText(object sender, RoutedEventArgs e)
+        private void DeleteText(object sender, RoutedEventArgs e) // apagar último digito do texto
         {
             if (Result.Text == "0")
             {
@@ -181,16 +195,20 @@ namespace CalculatorWPF
             Result.SelectionStart = Result.Text.Length;
         }
 
-        private int GetDoubleLength(double n)
+        private int GetDoubleLength(double n) //verificar o quantidade de números após casa decimal
         {
             string[] number = n.ToString().Split(',');
+            int size;
 
             if (number.Length == 1)
             {
                 return 0;
             }
 
-            int size = number[1].Length;
+            else
+            {
+                size = number[1].Length;
+            }
 
             return size;
         }
