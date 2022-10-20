@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -24,7 +22,10 @@ namespace CalculatorWPF
 
             if (Result.Text == "0" && button.Content.ToString() == ".")
             {
-                Result.AppendText(button.Content.ToString());
+                if(Result.Text.Length < 12)
+                {
+                    Result.AppendText(button.Content.ToString());
+                }
             }
 
             if (Result.Text.ToString() == "0" || isOperationPerformed)
@@ -38,12 +39,18 @@ namespace CalculatorWPF
             {
                 if (!Result.Text.ToString().Contains("."))
                 {
-                    Result.AppendText(button.Content.ToString());
+                    if (Result.Text.Length < 12)
+                    {
+                        Result.AppendText(button.Content.ToString());
+                    }
                 }
             }
             else
             {
-                Result.AppendText(button.Content.ToString());
+                if (Result.Text.Length < 12)
+                {
+                    Result.AppendText(button.Content.ToString());
+                }
             }
         }
 
@@ -59,25 +66,59 @@ namespace CalculatorWPF
 
         private void ResultButton(object sender, RoutedEventArgs e)
         {
+            double resultado = 0;
+
             switch (operationPerformed)
             {
                 case "+":
-                    Result.Text = (resultValue + double.Parse(Result.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
+                    resultado = resultValue + double.Parse(Result.Text, CultureInfo.InvariantCulture);
+
+                    if (GetDoubleLength(resultado) > 7)
+                    {
+                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        break;
+                    }
+
+                    Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
                 case "-":
-                    Result.Text = (resultValue - double.Parse(Result.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
+                    resultado = resultValue - double.Parse(Result.Text, CultureInfo.InvariantCulture);
+
+                    if (GetDoubleLength(resultado) > 7)
+                    {
+                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        break;
+                    }
+
+                    Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
                 case "x":
-                    Result.Text = (resultValue * double.Parse(Result.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
+                    resultado = resultValue * double.Parse(Result.Text, CultureInfo.InvariantCulture);
+
+                    if (GetDoubleLength(resultado) > 7)
+                    {
+                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        break;
+                    }
+
+                    Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
                 case "/":
-                    Result.Text = (resultValue / double.Parse(Result.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
+                    resultado = resultValue / double.Parse(Result.Text, CultureInfo.InvariantCulture);
+
+                    if(GetDoubleLength(resultado) > 7)
+                    {
+                        Result.Text = resultado.ToString("F7", CultureInfo.InvariantCulture);
+                        break;
+                    }
+
+                    Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
@@ -121,11 +162,11 @@ namespace CalculatorWPF
 
         private void DeleteText(object sender, RoutedEventArgs e)
         {
-            if(Result.Text == "0")
+            if (Result.Text == "0")
             {
                 Result.Text = "0";
             }
-            if(Result.Text.Length == 1)
+            if (Result.Text.Length == 1)
             {
                 Result.Text = "0";
             }
@@ -138,6 +179,20 @@ namespace CalculatorWPF
         private void Result_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Result.SelectionStart = Result.Text.Length;
+        }
+
+        private int GetDoubleLength(double n)
+        {
+            string[] number = n.ToString().Split(',');
+
+            if (number.Length == 1)
+            {
+                return 0;
+            }
+
+            int size = number[1].Length;
+
+            return size;
         }
     }
 }
