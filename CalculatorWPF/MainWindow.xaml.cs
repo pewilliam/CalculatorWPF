@@ -184,14 +184,6 @@ namespace CalculatorWPF
             this.WindowState = WindowState.Minimized;
         }
 
-        private void RowDefinition_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
-
         private void DeleteText(object sender, RoutedEventArgs e) // apagar último digito do texto
         {
             if (Result.Text == "0")
@@ -229,11 +221,6 @@ namespace CalculatorWPF
             }
 
             return size;
-        }
-
-        private void ShortcutKey_Click(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -315,6 +302,12 @@ namespace CalculatorWPF
                     NumericButtonClick(Dot, null);
                     break;
             }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

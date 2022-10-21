@@ -11,12 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("PW")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("CalculatorWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("Calculator made using WPF")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("Calculator")]
+[assembly: System.Reflection.AssemblyProductAttribute("CalculatorWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalculatorWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]

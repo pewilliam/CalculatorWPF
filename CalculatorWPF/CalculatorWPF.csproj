@@ -5,6 +5,12 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Authors>Pedro William</Authors>
+    <Title>Calculator</Title>
+    <Company>PW</Company>
+    <Product>Calculator</Product>
+    <Description>Calculator made using WPF</Description>
+    <PackageIcon>calculator.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,6 +23,17 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\images\calculator.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\images\calculator.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
