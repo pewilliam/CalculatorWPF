@@ -64,12 +64,14 @@
                     Grid.Column="14"
                     Content="X"
                     Click="CloseButton"
+                    Focusable="False"
                     Style="{StaticResource ResourceKey=ButtonsTools}"/>
 
             <Button x:Name="Minimize"
                     Grid.Column="13"
                     Content="-"
                     Click="MinimizeButton"
+                    Focusable="False"
                     Style="{StaticResource ResourceKey=ButtonsTools}"/>
         </Grid>
 
@@ -107,8 +109,8 @@
                 Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Delete"
-                Content="DEL"
-                FontSize="15"
+                Content="⌫"
+                FontSize="24"
                 Grid.Column="4"
                 Grid.Row="2"
                 Click="DeleteText"
@@ -125,7 +127,7 @@
                 Style="{StaticResource ResourceKey=Buttons}"/>
 
         <Button x:Name="Multiplier"
-                Content="x"
+                Content="×"
                 FontSize="35"
                 Grid.Column="3"
                 Grid.Row="2"

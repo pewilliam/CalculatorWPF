@@ -119,7 +119,7 @@ namespace CalculatorWPF
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
-                case "x": // multiplicação
+                case "×": // multiplicação
                     resultado = resultValue * double.Parse(Result.Text, CultureInfo.InvariantCulture);
 
                     if (GetDoubleLength(resultado) > 7) // verifica se a quantidade de números após casa decimal é maior que 7
