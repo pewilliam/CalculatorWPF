@@ -139,10 +139,10 @@ namespace CalculatorWPF
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
-                case "/": // divisão
+                case "÷": // divisão
                     resultado = resultValue / double.Parse(Result.Text, CultureInfo.InvariantCulture);
 
-                    if(GetDoubleLength(resultado) > 7) // verifica se a quantidade de números após casa decimal é maior que 7
+                    if (GetDoubleLength(resultado) > 7) // verifica se a quantidade de números após casa decimal é maior que 7
                     {
                         Result.Text = resultado.ToString("F10", CultureInfo.InvariantCulture);
                         break;
@@ -213,7 +213,7 @@ namespace CalculatorWPF
             Result.SelectionStart = Result.Text.Length;
         }
 
-        private int GetDoubleLength(double n) //verificar o quantidade de números após casa decimal
+        private static int GetDoubleLength(double n) //verificar o quantidade de números após casa decimal
         {
             string[] number = n.ToString().Split(',');
             int size;
@@ -229,6 +229,92 @@ namespace CalculatorWPF
             }
 
             return size;
+        }
+
+        private void ShortcutKey_Click(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.NumPad0:
+                    NumericButtonClick(_Zero, null);
+                    break;
+                case Key.NumPad1:
+                    NumericButtonClick(One, null);
+                    break;
+                case Key.NumPad2:
+                    NumericButtonClick(Two, null);
+                    break;
+                case Key.NumPad3:
+                    NumericButtonClick(_Three, null);
+                    break;
+                case Key.NumPad4:
+                    NumericButtonClick(Four, null);
+                    break;
+                case Key.NumPad5:
+                    NumericButtonClick(Five, null);
+                    break;
+                case Key.NumPad6:
+                    NumericButtonClick(Six, null);
+                    break;
+                case Key.NumPad7:
+                    NumericButtonClick(Seven, null);
+                    break;
+                case Key.NumPad8:
+                    NumericButtonClick(Eight, null);
+                    break;
+                case Key.NumPad9:
+                    NumericButtonClick(Nine, null);
+                    break;
+
+                case Key.Enter:
+                    ResultButton(Equals, null);
+                    break;
+
+                case Key.Multiply:
+                    OperatorButton(Multiplier, null);
+                    break;
+
+                case Key.Subtract:
+                    OperatorButton(Minus, null);
+                    break;
+
+                case Key.Divide:
+                    OperatorButton(Divisor, null);
+                    break;
+
+                case Key.Add:
+                    OperatorButton(Plus, null);
+                    break;
+
+                case Key.Back:
+                    DeleteText(Delete, null);
+                    break;
+
+                case Key.Escape:
+                    ClearEntryButton(ClearEntry, null);
+                    break;
+
+                case Key.Delete:
+                    ClearAllButton(Clear, null);
+                    break;
+
+                case Key.OemPeriod:
+                    NumericButtonClick(Dot, null);
+                    break;
+
+                case Key.OemComma:
+                    NumericButtonClick(Dot, null);
+                    break;
+
+                case Key.Decimal:
+                    NumericButtonClick(Dot, null);
+                    break;
+            }
         }
     }
 }
