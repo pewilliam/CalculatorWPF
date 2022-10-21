@@ -84,7 +84,12 @@ namespace CalculatorWPF
                         break;
                     }
 
-                    Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
+                    else
+                    {
+                        Result.FontSize = 40;
+                        Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
+                    }
+
                     Result.SelectionStart = Result.Text.Length;
                     break;
 
@@ -95,6 +100,19 @@ namespace CalculatorWPF
                     {
                         Result.Text = resultado.ToString("F10", CultureInfo.InvariantCulture);
                         break;
+                    }
+
+                    if (resultado.ToString().Length > 10) // verifica se a quantidade de números totais é maior que 10
+                    {
+                        Result.FontSize = 28; // caso seja, diminui tamanho da fonte para 28 para caber todos
+                        Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
+                        break;
+                    }
+
+                    else
+                    {
+                        Result.FontSize = 40;
+                        Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
                     }
 
                     Result.Text = resultado.ToString(CultureInfo.InvariantCulture);
